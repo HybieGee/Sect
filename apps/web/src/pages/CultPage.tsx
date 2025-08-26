@@ -24,7 +24,7 @@ function CultPage() {
   const [showSignalForm, setShowSignalForm] = useState(false);
   const [signalForm, setSignalForm] = useState({ title: '', body: '', url: '' });
   
-  const API_URL = import.meta.env.PROD ? 'https://the-sect-api.workers.dev' : '';
+  const API_URL = import.meta.env.PROD ? 'https://the-sect-api.stealthbundlebot.workers.dev' : '';
   
   useEffect(() => {
     fetchCultData();
@@ -54,7 +54,7 @@ function CultPage() {
     }
   };
   
-  const checkMembership = async (cultId: string) => {
+  const checkMembership = async (_cultId: string) => {
     setIsMember(false);
   };
   

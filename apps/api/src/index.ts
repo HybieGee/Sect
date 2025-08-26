@@ -1,5 +1,4 @@
 import { Hono } from 'hono';
-import { cors } from 'hono/cors';
 import { Env } from './types';
 import { authRoutes } from './routes/auth';
 import { cultsRoutes } from './routes/cults';
@@ -10,10 +9,21 @@ import { computeRanking, saveRankingSnapshot } from './utils/ranking';
 
 const app = new Hono<{ Bindings: Env }>();
 
-app.use('*', cors({
-  origin: ['http://localhost:5173', 'https://the-sect.pages.dev'],
-  credentials: true
-}));
+app.use('*', async (c, next) => {
+  const origin = c.req.header('Origin');
+  if (origin && (origin.includes('localhost:5173') || origin.includes('.pages.dev') || origin === 'https://the-sect.pages.dev')) {
+    c.header('Access-Control-Allow-Origin', origin);
+    c.header('Access-Control-Allow-Credentials', 'true');
+    c.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    c.header('Access-Control-Allow-Headers', 'Content-Type');
+  }
+  
+  if (c.req.method === 'OPTIONS') {
+    return new Response(null, { status: 204 });
+  }
+  
+  await next();
+});
 
 app.get('/api/health', (c) => {
   return c.json({ status: 'healthy', timestamp: Date.now() });

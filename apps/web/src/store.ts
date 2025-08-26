@@ -38,7 +38,7 @@ interface AppState {
   leaveCult: (cultId: string) => Promise<void>;
 }
 
-const API_URL = import.meta.env.PROD ? 'https://the-sect-api.workers.dev' : '';
+const API_URL = import.meta.env.PROD ? 'https://the-sect-api.stealthbundlebot.workers.dev' : '';
 
 export const useStore = create<AppState>((set, get) => ({
   user: null,

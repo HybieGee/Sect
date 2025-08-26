@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "hono": "^4.0.0",
-    "@hono/cors": "^1.0.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

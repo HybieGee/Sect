@@ -1,5 +1,5 @@
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Environment, PerspectiveCamera, Text, Box, Plane, useGLTF, Html } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, PerspectiveCamera, useGLTF, Html } from '@react-three/drei';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { useNavigate } from 'react-router-dom';
 import { useState, Suspense, useRef } from 'react';
@@ -66,7 +66,7 @@ function GalleryModel() {
 
 function Room() {
   const navigate = useNavigate();
-  const [showLabels, setShowLabels] = useState(true);
+  const [showLabels] = useState(true);
   
   return (
     <>

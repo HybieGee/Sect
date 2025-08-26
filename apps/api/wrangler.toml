@@ -8,19 +8,19 @@ vars = { ENVIRONMENT = "production" }
 [[d1_databases]]
 binding = "DB"
 database_name = "the-sect-db"
-database_id = "YOUR_DATABASE_ID"
+database_id = "3acf9125-bb18-4887-bbc7-ac6c9ed941e8"
 
 [[kv_namespaces]]
 binding = "TOP10_CACHE"
-id = "YOUR_TOP10_CACHE_ID"
+id = "5c181d9fabcc4c1a83a4b6c00d3a7421"
 
 [[kv_namespaces]]
 binding = "CULT_COUNTERS"
-id = "YOUR_CULT_COUNTERS_ID"
+id = "14a2c2e1dbb14b45ba5024cbc58fdda5"
 
 [[kv_namespaces]]
 binding = "RATE_LIMITS"
-id = "YOUR_RATE_LIMITS_ID"
+id = "403d6e1ed5dd49738952aa562255b778"
 
 [[r2_buckets]]
 binding = "ASSETS_BUCKET"
