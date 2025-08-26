@@ -1,0 +1,296 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  overflow: hidden;
+}
+
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ff0000;
+  font-size: 24px;
+  text-align: center;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #111;
+  border: 2px solid #ff0000;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal h2 {
+  color: #ff0000;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.modal .close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #ff0000;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.modal .close:hover {
+  transform: scale(1.2);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  background: #000;
+  border: 1px solid #333;
+  color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #ff0000;
+}
+
+.form-group .help {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.form-group .error {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: #ff0000;
+}
+
+.button {
+  background: #ff0000;
+  color: #000;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.button:hover {
+  background: #cc0000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button.secondary {
+  background: transparent;
+  color: #ff0000;
+  border: 2px solid #ff0000;
+}
+
+.button.secondary:hover {
+  background: #ff0000;
+  color: #000;
+}
+
+.hud {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+  border: 1px solid #ff0000;
+  min-width: 200px;
+}
+
+.hud h3 {
+  color: #ff0000;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.hud .stat {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.hud .stat .label {
+  color: #999;
+}
+
+.hud .stat .value {
+  color: #fff;
+}
+
+.nav {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav button {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #ff0000;
+  color: #ff0000;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.nav button:hover {
+  background: #ff0000;
+  color: #000;
+}
+
+.cult-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.cult-card {
+  background: #111;
+  border: 1px solid #333;
+  padding: 1.5rem;
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.cult-card:hover {
+  border-color: #ff0000;
+  transform: translateY(-4px);
+}
+
+.cult-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff0000, transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s;
+}
+
+.cult-card:hover::before {
+  transform: translateX(100%);
+}
+
+.cult-card .rank {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #ff0000;
+  font-size: 2rem;
+  font-weight: bold;
+  opacity: 0.3;
+}
+
+.cult-card h3 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.cult-card .symbol {
+  color: #ff0000;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.cult-card .description {
+  color: #999;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.cult-card .stats {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid #333;
+}
+
+.cult-card .stat {
+  text-align: center;
+}
+
+.cult-card .stat .value {
+  color: #ff0000;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.cult-card .stat .label {
+  color: #666;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
