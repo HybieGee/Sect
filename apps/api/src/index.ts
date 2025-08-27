@@ -18,7 +18,9 @@ app.use('*', async (c, next) => {
     origin.includes('.pages.dev') || 
     origin === 'https://the-sect.pages.dev' ||
     origin === 'https://910c2a84.the-sect.pages.dev' ||
-    origin === 'https://e347b1b4.the-sect.pages.dev'
+    origin === 'https://e347b1b4.the-sect.pages.dev' ||
+    origin === 'https://7b27231b.sect-6sc.pages.dev' ||
+    origin === 'https://e2ce4cca.sect-6sc.pages.dev'
   )) {
     c.header('Access-Control-Allow-Origin', origin);
     c.header('Access-Control-Allow-Credentials', 'true');

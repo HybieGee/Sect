@@ -116,7 +116,7 @@ function FPSCamera() {
     camera.position.add(velocity.current);
     
     // Keep camera at reasonable height
-    camera.position.y = Math.max(1.5, camera.position.y);
+    camera.position.y = Math.max(2, camera.position.y);
   });
   
   return (
@@ -183,14 +183,26 @@ function GalleryModel() {
       const box = new THREE.Box3().setFromObject(gltf.scene);
       const size = box.getSize(new THREE.Vector3());
       console.log('Model size:', size);
+      console.log('Model bounds:', box.min, box.max);
       
-      // If model is very large or very small, scale it
-      if (size.length() > 50 || size.length() < 5) {
-        const targetSize = 20;
+      // Always scale up if the model is too small (gallery should be room-sized)
+      if (size.length() < 10) {
+        const targetSize = 30; // Make it larger for a proper gallery
+        const scale = targetSize / size.length();
+        gltf.scene.scale.setScalar(scale);
+        console.log('Applied scale:', scale);
+      } else if (size.length() > 100) {
+        // Only scale down if really huge
+        const targetSize = 50;
         const scale = targetSize / size.length();
         gltf.scene.scale.setScalar(scale);
         console.log('Applied scale:', scale);
       }
+      
+      // Center the model at origin
+      const center = box.getCenter(new THREE.Vector3());
+      gltf.scene.position.sub(center);
+      console.log('Centered model at:', gltf.scene.position);
     }
   }, [gltf]);
   
@@ -469,7 +481,7 @@ function Hub() {
   
   return (
     <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
-      <Canvas shadows camera={{ position: [0, 2, 8], fov: 75 }}>        
+      <Canvas shadows camera={{ position: [0, 5, 15], fov: 75 }}>        
         {/* Lighting setup for better visibility */}
         <ambientLight intensity={0.3} color="#ffffff" />
         <directionalLight 
