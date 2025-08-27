@@ -11,11 +11,19 @@ const app = new Hono<{ Bindings: Env }>();
 
 app.use('*', async (c, next) => {
   const origin = c.req.header('Origin');
-  if (origin && (origin.includes('localhost:5173') || origin.includes('.pages.dev') || origin === 'https://the-sect.pages.dev')) {
+  console.log('CORS - Origin:', origin);
+  
+  if (origin && (
+    origin.includes('localhost:5173') || 
+    origin.includes('.pages.dev') || 
+    origin === 'https://the-sect.pages.dev' ||
+    origin === 'https://910c2a84.the-sect.pages.dev' ||
+    origin === 'https://e347b1b4.the-sect.pages.dev'
+  )) {
     c.header('Access-Control-Allow-Origin', origin);
     c.header('Access-Control-Allow-Credentials', 'true');
     c.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    c.header('Access-Control-Allow-Headers', 'Content-Type');
+    c.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   }
   
   if (c.req.method === 'OPTIONS') {
