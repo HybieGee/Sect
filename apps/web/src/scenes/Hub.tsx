@@ -156,12 +156,17 @@ function GalleryModel() {
                 // Make sure the material is visible
                 material.visible = true;
                 
-                // Add some emissive glow for any materials
+                // Only enhance materials that don't already have emissive properties
+                // Keep chandelier and other emissive materials as they are
                 if (material instanceof THREE.MeshStandardMaterial) {
-                  material.emissive = new THREE.Color(0x110000);
-                  material.emissiveIntensity = 0.1;
-                  material.metalness = 0.1;
-                  material.roughness = 0.8;
+                  // Check if this material already has emissive properties from the GLTF
+                  if (!material.emissiveMap && material.emissive.getHex() === 0x000000) {
+                    // Only add subtle emissive to non-emissive materials
+                    material.emissive = new THREE.Color(0x050505);
+                    material.emissiveIntensity = 0.05;
+                  }
+                  // Preserve original metalness and roughness from GLTF
+                  // material.metalness and material.roughness are already set from GLTF
                 }
                 
                 material.needsUpdate = true;
@@ -483,16 +488,20 @@ function Hub() {
     <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
       <Canvas shadows camera={{ position: [0, 5, 15], fov: 75 }}>        
         {/* Lighting setup for better visibility */}
-        <ambientLight intensity={0.3} color="#ffffff" />
+        <ambientLight intensity={1.2} color="#ffffff" />
         <directionalLight 
           position={[10, 10, 5]} 
-          intensity={0.8} 
+          intensity={2.5} 
           color="#ffffff" 
           castShadow 
         />
-        <pointLight position={[0, 8, 0]} intensity={1.2} color="#ff0000" />
-        <pointLight position={[-10, 5, -10]} intensity={0.5} color="#ff0000" />
-        <pointLight position={[10, 5, -10]} intensity={0.5} color="#ff0000" />
+        <pointLight position={[0, 8, 0]} intensity={4} color="#ffcc88" />
+        <pointLight position={[-10, 5, -10]} intensity={3} color="#ff9966" />
+        <pointLight position={[10, 5, -10]} intensity={3} color="#ff9966" />
+        <pointLight position={[0, 6, 10]} intensity={3} color="#ffaa77" />
+        <pointLight position={[0, 6, -20]} intensity={3} color="#ffaa77" />
+        <pointLight position={[-15, 8, 0]} intensity={2.5} color="#ffbb88" />
+        <pointLight position={[15, 8, 0]} intensity={2.5} color="#ffbb88" />
         
         <Suspense fallback={null}>
           <Room />
