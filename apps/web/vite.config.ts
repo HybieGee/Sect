@@ -44,7 +44,10 @@ export default defineConfig({
             'Roman Pillar_Metallic.png-Roman Pillar_Roughness.png.png',
             'Teeth_BaseColor.png',
             'Teeth_Normal1.png',
-            'Teeth_Metallic.png-Teeth_Roughness.png.png'
+            'Teeth_Metallic.png-Teeth_Roughness.png.png',
+            'Wood006_1K-JPG_Color.jpg',
+            'Wood006_1K-JPG_NormalGL.jpg',
+            'Wood006_1K-JPG_Roughness.png'
           ];
           
           textures.forEach(texture => {
