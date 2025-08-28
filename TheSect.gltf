@@ -4,9 +4,7 @@
 		"version":"2.0"
 	},
 	"extensionsUsed":[
-		"KHR_materials_transmission",
-		"KHR_materials_specular",
-		"KHR_materials_ior"
+		"KHR_materials_specular"
 	],
 	"scene":0,
 	"scenes":[
@@ -49,8 +47,7 @@
 				33,
 				34,
 				35,
-				36,
-				37
+				36
 			]
 		}
 	],
@@ -746,26 +743,6 @@
 				0,
 				-52.4900016784668
 			]
-		},
-		{
-			"mesh":37,
-			"name":"DF",
-			"rotation":[
-				0.41820427775382996,
-				0.5903305411338806,
-				-0.496890127658844,
-				0.47928622364997864
-			],
-			"scale":[
-				0.10000000149011612,
-				0.10000000149011612,
-				0.10000000149011612
-			],
-			"translation":[
-				0,
-				4.039999961853027,
-				-1.809999942779541
-			]
 		}
 	],
 	"materials":[
@@ -822,48 +799,34 @@
 		},
 		{
 			"doubleSided":true,
-			"extensions":{
-				"KHR_materials_transmission":{
-					"transmissionFactor":1
-				},
-				"KHR_materials_specular":{
-					"specularFactor":0
-				},
-				"KHR_materials_ior":{
-					"ior":1
-				}
-			},
-			"name":"aport",
+			"name":"aport"
+		},
+		{
+			"doubleSided":true,
+			"name":"Portal",
 			"normalTexture":{
-				"index":4,
-				"scale":10
+				"index":4
 			},
 			"pbrMetallicRoughness":{
 				"baseColorTexture":{
 					"index":5
 				},
-				"metallicFactor":0
+				"metallicFactor":0,
+				"metallicRoughnessTexture":{
+					"index":6
+				}
 			}
 		},
 		{
 			"doubleSided":true,
 			"name":"Roman_Pillar",
 			"normalTexture":{
-				"index":6
+				"index":7
 			},
 			"pbrMetallicRoughness":{
 				"baseColorTexture":{
-					"index":7
-				},
-				"metallicRoughnessTexture":{
 					"index":8
-				}
-			}
-		},
-		{
-			"doubleSided":true,
-			"name":"Gargoyle",
-			"pbrMetallicRoughness":{
+				},
 				"metallicRoughnessTexture":{
 					"index":9
 				}
@@ -871,7 +834,7 @@
 		},
 		{
 			"doubleSided":true,
-			"name":"Teeth",
+			"name":"Gargoyle",
 			"normalTexture":{
 				"index":10
 			},
@@ -881,6 +844,21 @@
 				},
 				"metallicRoughnessTexture":{
 					"index":12
+				}
+			}
+		},
+		{
+			"doubleSided":true,
+			"name":"Teeth",
+			"normalTexture":{
+				"index":13
+			},
+			"pbrMetallicRoughness":{
+				"baseColorTexture":{
+					"index":14
+				},
+				"metallicRoughnessTexture":{
+					"index":15
 				}
 			}
 		}
@@ -1104,7 +1082,7 @@
 						"TEXCOORD_0":54
 					},
 					"indices":51,
-					"material":3
+					"material":4
 				}
 			]
 		},
@@ -1341,7 +1319,7 @@
 						"TEXCOORD_0":110
 					},
 					"indices":111,
-					"material":4
+					"material":5
 				}
 			]
 		},
@@ -1355,7 +1333,7 @@
 						"TEXCOORD_0":114
 					},
 					"indices":115,
-					"material":5
+					"material":6
 				},
 				{
 					"attributes":{
@@ -1364,7 +1342,7 @@
 						"TEXCOORD_0":118
 					},
 					"indices":119,
-					"material":6
+					"material":7
 				}
 			]
 		},
@@ -1378,7 +1356,7 @@
 						"TEXCOORD_0":122
 					},
 					"indices":111,
-					"material":4
+					"material":5
 				}
 			]
 		},
@@ -1392,7 +1370,7 @@
 						"TEXCOORD_0":125
 					},
 					"indices":115,
-					"material":5
+					"material":6
 				},
 				{
 					"attributes":{
@@ -1401,19 +1379,7 @@
 						"TEXCOORD_0":128
 					},
 					"indices":119,
-					"material":6
-				}
-			]
-		},
-		{
-			"name":"DF",
-			"primitives":[
-				{
-					"attributes":{
-						"POSITION":129,
-						"NORMAL":130
-					},
-					"indices":131
+					"material":7
 				}
 			]
 		}
@@ -1470,6 +1436,18 @@
 		{
 			"sampler":0,
 			"source":12
+		},
+		{
+			"sampler":0,
+			"source":13
+		},
+		{
+			"sampler":0,
+			"source":14
+		},
+		{
+			"sampler":0,
+			"source":15
 		}
 	],
 	"images":[
@@ -1505,6 +1483,11 @@
 		},
 		{
 			"mimeType":"image/png",
+			"name":"OD204-Sp",
+			"uri":"Textures/OD204-Sp.png"
+		},
+		{
+			"mimeType":"image/png",
 			"name":"Roman Pillar_Normal1k",
 			"uri":"Textures/Roman%20Pillar_Normal1k.png"
 		},
@@ -1520,8 +1503,18 @@
 		},
 		{
 			"mimeType":"image/png",
-			"name":"Gargoyle_Metallic.png-Gargoyle_Roughness.png",
-			"uri":"Textures/Gargoyle_Metallic.png-Gargoyle_Roughness.png.png"
+			"name":"Gargoyle_Normal1",
+			"uri":"Textures/Gargoyle_Normal1.png"
+		},
+		{
+			"mimeType":"image/png",
+			"name":"Gargoyle_BaseColor",
+			"uri":"Textures/Gargoyle_BaseColor.png"
+		},
+		{
+			"mimeType":"image/png",
+			"name":"Gargoyle_Metallic-Gargoyle_Roughness",
+			"uri":"Textures/Gargoyle_Metallic-Gargoyle_Roughness.png"
 		},
 		{
 			"mimeType":"image/png",
@@ -2703,34 +2696,6 @@
 			"componentType":5126,
 			"count":4978,
 			"type":"VEC2"
-		},
-		{
-			"bufferView":129,
-			"componentType":5126,
-			"count":2752127,
-			"max":[
-				39.038753509521484,
-				8.547872543334961,
-				26.980266571044922
-			],
-			"min":[
-				-39.01463317871094,
-				1.9804041385650635,
-				-27.238441467285156
-			],
-			"type":"VEC3"
-		},
-		{
-			"bufferView":130,
-			"componentType":5126,
-			"count":2752127,
-			"type":"VEC3"
-		},
-		{
-			"bufferView":131,
-			"componentType":5125,
-			"count":4789206,
-			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
@@ -3507,24 +3472,6 @@
 			"byteLength":39824,
 			"byteOffset":1958760,
 			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":33025524,
-			"byteOffset":1998584,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":33025524,
-			"byteOffset":35024108,
-			"target":34962
-		},
-		{
-			"buffer":0,
-			"byteLength":19156824,
-			"byteOffset":68049632,
-			"target":34963
 		}
 	],
 	"samplers":[
@@ -3535,7 +3482,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":87206456,
+			"byteLength":1998584,
 			"uri":"TheSect.bin"
 		}
 	]
