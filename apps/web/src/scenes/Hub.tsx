@@ -478,17 +478,17 @@ function Hub() {
         <pointLight position={[0, 8, -20]} intensity={8} color="#ffaa66" decay={1} distance={45} />
         <pointLight position={[0, 8, -30]} intensity={8} color="#ffaa66" decay={1} distance={45} />
         
-        {/* Showcase room lights */}
-        <pointLight position={[-7, 7, -45]} intensity={6} color="#ffaa66" decay={1} distance={35} />
-        <pointLight position={[7, 7, -45]} intensity={6} color="#ffaa66" decay={1} distance={35} />
-        <pointLight position={[0, 7, -50]} intensity={8} color="#ffaa66" decay={1} distance={45} />
-        <pointLight position={[-15, 7, -50]} intensity={4} color="#ff9966" decay={1.2} distance={30} />
-        <pointLight position={[15, 7, -50]} intensity={4} color="#ff9966" decay={1.2} distance={30} />
+        {/* Showcase room lights - moved away from artwork */}
+        <pointLight position={[-7, 10, -42]} intensity={6} color="#ffaa66" decay={1} distance={35} />
+        <pointLight position={[7, 10, -42]} intensity={6} color="#ffaa66" decay={1} distance={35} />
+        <pointLight position={[0, 10, -48]} intensity={8} color="#ffaa66" decay={1} distance={45} />
+        <pointLight position={[-15, 10, -48]} intensity={4} color="#ff9966" decay={1.2} distance={30} />
+        <pointLight position={[15, 10, -48]} intensity={4} color="#ff9966" decay={1.2} distance={30} />
         
-        {/* Additional showcase lighting */}
-        <pointLight position={[0, 8, -55]} intensity={8} color="#ffddaa" decay={1} distance={45} />
-        <pointLight position={[-10, 6, -55]} intensity={6} color="#ffbb88" decay={1} distance={35} />
-        <pointLight position={[10, 6, -55]} intensity={6} color="#ffbb88" decay={1} distance={35} />
+        {/* Additional showcase lighting - raised to ceiling */}
+        <pointLight position={[0, 12, -55]} intensity={6} color="#ffddaa" decay={1} distance={45} />
+        <pointLight position={[-10, 10, -55]} intensity={5} color="#ffbb88" decay={1} distance={35} />
+        <pointLight position={[10, 10, -55]} intensity={5} color="#ffbb88" decay={1} distance={35} />
         
         {/* Side room lights - reduced to avoid glare on artwork */}
         <pointLight position={[-20, 6, -40]} intensity={2.5} color="#ffbb88" decay={1.5} distance={25} />
