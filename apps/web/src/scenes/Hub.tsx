@@ -142,43 +142,12 @@ function GalleryModel() {
       setModelReady(true);
       setError(null);
       
-      // Apply materials to enhance the model
+      // Let materials from GLTF remain unchanged for proper lighting
       gltf.scene.traverse((child) => {
         console.log('Processing child:', child.name, child.type);
         
         if (child instanceof THREE.Mesh) {
-          if (child.material) {
-            const materials = Array.isArray(child.material) ? child.material : [child.material];
-            
-            materials.forEach((material) => {
-              if (material instanceof THREE.MeshStandardMaterial || 
-                  material instanceof THREE.MeshBasicMaterial) {
-                // Make sure the material is visible
-                material.visible = true;
-                
-                // Only enhance materials that don't already have emissive properties
-                // Keep chandelier and other emissive materials as they are
-                if (material instanceof THREE.MeshStandardMaterial) {
-                  // Check if this material already has emissive properties from the GLTF
-                  if (!material.emissiveMap && material.emissive.getHex() === 0x000000) {
-                    // Only add subtle emissive to non-emissive materials
-                    material.emissive = new THREE.Color(0x050505);
-                    material.emissiveIntensity = 0.05;
-                  }
-                  // Preserve original metalness and roughness from GLTF
-                  // material.metalness and material.roughness are already set from GLTF
-                }
-                
-                material.needsUpdate = true;
-              }
-            });
-          }
-          
-          // Make sure geometry is visible
-          if (child.geometry) {
-            child.geometry.computeVertexNormals();
-          }
-          
+          // Only set shadow properties, don't modify materials
           child.castShadow = true;
           child.receiveShadow = true;
         }
@@ -487,39 +456,39 @@ function Hub() {
   return (
     <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
       <Canvas shadows camera={{ position: [0, 5, 15], fov: 75 }}>        
-        {/* Lighting setup for better visibility */}
-        <ambientLight intensity={1.5} color="#ffffff" />
+        {/* Dramatic lighting like Blender - minimal ambient, strong point lights */}
+        <ambientLight intensity={0.1} color="#ffffff" />
+        
+        {/* Main directional light for shadows */}
         <directionalLight 
-          position={[10, 20, 5]} 
-          intensity={3} 
+          position={[5, 15, 5]} 
+          intensity={0.5} 
           color="#ffffff" 
           castShadow 
+          shadow-mapSize={[2048, 2048]}
         />
         
-        {/* Hub room lights */}
-        <pointLight position={[0, 8, 0]} intensity={4} color="#ffcc88" />
-        <pointLight position={[-10, 5, -10]} intensity={3} color="#ff9966" />
-        <pointLight position={[10, 5, -10]} intensity={3} color="#ff9966" />
-        <pointLight position={[0, 6, 10]} intensity={3} color="#ffaa77" />
+        {/* Hub room chandeliers and dramatic lighting */}
+        <pointLight position={[0, 7, 0]} intensity={2} color="#ffaa66" decay={2} distance={30} />
+        <pointLight position={[-8, 6, -8]} intensity={1.5} color="#ff8844" decay={2} distance={25} />
+        <pointLight position={[8, 6, -8]} intensity={1.5} color="#ff8844" decay={2} distance={25} />
         
-        {/* Corridor lights */}
-        <pointLight position={[0, 6, -20]} intensity={4} color="#ffaa77" />
-        <pointLight position={[0, 6, -30]} intensity={4} color="#ffaa77" />
+        {/* Corridor dramatic pools of light */}
+        <spotLight position={[0, 8, -20]} intensity={3} color="#ffaa66" angle={0.6} penumbra={0.5} decay={2} distance={20} target-position={[0, 0, -20]} />
+        <spotLight position={[0, 8, -30]} intensity={3} color="#ffaa66" angle={0.6} penumbra={0.5} decay={2} distance={20} target-position={[0, 0, -30]} />
         
-        {/* Showcase room lights - positioned deeper in the gallery */}
-        <pointLight position={[0, 8, -40]} intensity={5} color="#ffcc88" />
-        <pointLight position={[-10, 8, -45]} intensity={4} color="#ffbb99" />
-        <pointLight position={[10, 8, -45]} intensity={4} color="#ffbb99" />
-        <pointLight position={[0, 8, -50]} intensity={5} color="#ffcc88" />
-        <pointLight position={[-15, 8, -50]} intensity={4} color="#ff9966" />
-        <pointLight position={[15, 8, -50]} intensity={4} color="#ff9966" />
-        <pointLight position={[0, 10, -55]} intensity={5} color="#ffddaa" />
+        {/* Showcase room chandelier spots */}
+        <pointLight position={[-7, 7, -45]} intensity={2} color="#ffaa66" decay={2} distance={25} />
+        <pointLight position={[7, 7, -45]} intensity={2} color="#ffaa66" decay={2} distance={25} />
+        <pointLight position={[0, 7, -50]} intensity={2.5} color="#ffaa66" decay={2} distance={30} />
         
-        {/* Side room lights */}
-        <pointLight position={[-20, 8, -40]} intensity={4} color="#ffbb88" />
-        <pointLight position={[20, 8, -40]} intensity={4} color="#ffbb88" />
-        <pointLight position={[-25, 8, -50]} intensity={4} color="#ffcc99" />
-        <pointLight position={[25, 8, -50]} intensity={4} color="#ffcc99" />
+        {/* Dramatic accent lighting for art */}
+        <spotLight position={[-15, 8, -45]} intensity={2} color="#ffffff" angle={0.4} penumbra={0.3} decay={2} distance={20} target-position={[-15, 3, -50]} />
+        <spotLight position={[15, 8, -45]} intensity={2} color="#ffffff" angle={0.4} penumbra={0.3} decay={2} distance={20} target-position={[15, 3, -50]} />
+        
+        {/* Subtle fill lights to prevent complete darkness */}
+        <pointLight position={[-20, 5, -40]} intensity={0.5} color="#663333" decay={2} distance={20} />
+        <pointLight position={[20, 5, -40]} intensity={0.5} color="#663333" decay={2} distance={20} />
         
         <Suspense fallback={null}>
           <Room />
