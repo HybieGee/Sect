@@ -488,20 +488,38 @@ function Hub() {
     <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
       <Canvas shadows camera={{ position: [0, 5, 15], fov: 75 }}>        
         {/* Lighting setup for better visibility */}
-        <ambientLight intensity={1.2} color="#ffffff" />
+        <ambientLight intensity={1.5} color="#ffffff" />
         <directionalLight 
-          position={[10, 10, 5]} 
-          intensity={2.5} 
+          position={[10, 20, 5]} 
+          intensity={3} 
           color="#ffffff" 
           castShadow 
         />
+        
+        {/* Hub room lights */}
         <pointLight position={[0, 8, 0]} intensity={4} color="#ffcc88" />
         <pointLight position={[-10, 5, -10]} intensity={3} color="#ff9966" />
         <pointLight position={[10, 5, -10]} intensity={3} color="#ff9966" />
         <pointLight position={[0, 6, 10]} intensity={3} color="#ffaa77" />
-        <pointLight position={[0, 6, -20]} intensity={3} color="#ffaa77" />
-        <pointLight position={[-15, 8, 0]} intensity={2.5} color="#ffbb88" />
-        <pointLight position={[15, 8, 0]} intensity={2.5} color="#ffbb88" />
+        
+        {/* Corridor lights */}
+        <pointLight position={[0, 6, -20]} intensity={4} color="#ffaa77" />
+        <pointLight position={[0, 6, -30]} intensity={4} color="#ffaa77" />
+        
+        {/* Showcase room lights - positioned deeper in the gallery */}
+        <pointLight position={[0, 8, -40]} intensity={5} color="#ffcc88" />
+        <pointLight position={[-10, 8, -45]} intensity={4} color="#ffbb99" />
+        <pointLight position={[10, 8, -45]} intensity={4} color="#ffbb99" />
+        <pointLight position={[0, 8, -50]} intensity={5} color="#ffcc88" />
+        <pointLight position={[-15, 8, -50]} intensity={4} color="#ff9966" />
+        <pointLight position={[15, 8, -50]} intensity={4} color="#ff9966" />
+        <pointLight position={[0, 10, -55]} intensity={5} color="#ffddaa" />
+        
+        {/* Side room lights */}
+        <pointLight position={[-20, 8, -40]} intensity={4} color="#ffbb88" />
+        <pointLight position={[20, 8, -40]} intensity={4} color="#ffbb88" />
+        <pointLight position={[-25, 8, -50]} intensity={4} color="#ffcc99" />
+        <pointLight position={[25, 8, -50]} intensity={4} color="#ffcc99" />
         
         <Suspense fallback={null}>
           <Room />
