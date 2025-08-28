@@ -455,7 +455,7 @@ function Hub() {
   
   return (
     <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
-      <Canvas shadows camera={{ position: [0, 5, 15], fov: 75 }}>        
+      <Canvas key="hub-scene" shadows camera={{ position: [0, 5, 15], fov: 75 }}>        
         {/* Balanced lighting - visible but still atmospheric */}
         <ambientLight intensity={0.6} color="#ffffff" />
         
@@ -479,20 +479,20 @@ function Hub() {
         <pointLight position={[0, 8, -30]} intensity={8} color="#ffaa66" decay={1} distance={45} />
         
         {/* Showcase room lights */}
-        <pointLight position={[-7, 7, -45]} intensity={8} color="#ffaa66" decay={1} distance={40} />
-        <pointLight position={[7, 7, -45]} intensity={8} color="#ffaa66" decay={1} distance={40} />
-        <pointLight position={[0, 7, -50]} intensity={10} color="#ffaa66" decay={1} distance={50} />
-        <pointLight position={[-15, 7, -50]} intensity={7} color="#ff9966" decay={1} distance={40} />
-        <pointLight position={[15, 7, -50]} intensity={7} color="#ff9966" decay={1} distance={40} />
+        <pointLight position={[-7, 7, -45]} intensity={6} color="#ffaa66" decay={1} distance={35} />
+        <pointLight position={[7, 7, -45]} intensity={6} color="#ffaa66" decay={1} distance={35} />
+        <pointLight position={[0, 7, -50]} intensity={8} color="#ffaa66" decay={1} distance={45} />
+        <pointLight position={[-15, 7, -50]} intensity={4} color="#ff9966" decay={1.2} distance={30} />
+        <pointLight position={[15, 7, -50]} intensity={4} color="#ff9966" decay={1.2} distance={30} />
         
         {/* Additional showcase lighting */}
         <pointLight position={[0, 8, -55]} intensity={8} color="#ffddaa" decay={1} distance={45} />
         <pointLight position={[-10, 6, -55]} intensity={6} color="#ffbb88" decay={1} distance={35} />
         <pointLight position={[10, 6, -55]} intensity={6} color="#ffbb88" decay={1} distance={35} />
         
-        {/* Side room lights */}
-        <pointLight position={[-20, 6, -40]} intensity={5} color="#ffbb88" decay={1} distance={35} />
-        <pointLight position={[20, 6, -40]} intensity={5} color="#ffbb88" decay={1} distance={35} />
+        {/* Side room lights - reduced to avoid glare on artwork */}
+        <pointLight position={[-20, 6, -40]} intensity={2.5} color="#ffbb88" decay={1.5} distance={25} />
+        <pointLight position={[20, 6, -40]} intensity={2.5} color="#ffbb88" decay={1.5} distance={25} />
         
         <Suspense fallback={null}>
           <Room />
