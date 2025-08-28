@@ -49,7 +49,8 @@
 				33,
 				34,
 				35,
-				36
+				36,
+				37
 			]
 		}
 	],
@@ -72,9 +73,9 @@
 			"mesh":1,
 			"name":"Corridor",
 			"scale":[
-				5,
-				4,
-				5
+				5.079999923706055,
+				4.110000133514404,
+				5.010000228881836
 			],
 			"translation":[
 				0,
@@ -745,6 +746,26 @@
 				0,
 				-52.4900016784668
 			]
+		},
+		{
+			"mesh":37,
+			"name":"DF",
+			"rotation":[
+				0.41820427775382996,
+				0.5903305411338806,
+				-0.496890127658844,
+				0.47928622364997864
+			],
+			"scale":[
+				0.10000000149011612,
+				0.10000000149011612,
+				0.10000000149011612
+			],
+			"translation":[
+				0,
+				4.039999961853027,
+				-1.809999942779541
+			]
 		}
 	],
 	"materials":[
@@ -1381,6 +1402,18 @@
 					},
 					"indices":119,
 					"material":6
+				}
+			]
+		},
+		{
+			"name":"DF",
+			"primitives":[
+				{
+					"attributes":{
+						"POSITION":129,
+						"NORMAL":130
+					},
+					"indices":131
 				}
 			]
 		}
@@ -2670,6 +2703,34 @@
 			"componentType":5126,
 			"count":4978,
 			"type":"VEC2"
+		},
+		{
+			"bufferView":129,
+			"componentType":5126,
+			"count":2752127,
+			"max":[
+				39.038753509521484,
+				8.547872543334961,
+				26.980266571044922
+			],
+			"min":[
+				-39.01463317871094,
+				1.9804041385650635,
+				-27.238441467285156
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":130,
+			"componentType":5126,
+			"count":2752127,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":131,
+			"componentType":5125,
+			"count":4789206,
+			"type":"SCALAR"
 		}
 	],
 	"bufferViews":[
@@ -3446,6 +3507,24 @@
 			"byteLength":39824,
 			"byteOffset":1958760,
 			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":33025524,
+			"byteOffset":1998584,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":33025524,
+			"byteOffset":35024108,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":19156824,
+			"byteOffset":68049632,
+			"target":34963
 		}
 	],
 	"samplers":[
@@ -3456,7 +3535,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":1998584,
+			"byteLength":87206456,
 			"uri":"TheSect.bin"
 		}
 	]
